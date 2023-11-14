@@ -2,8 +2,12 @@ package org.kingsy.pojo;
 
 
 
-import java.time.LocalDateTime;
+import lombok.Data;
 
+import java.time.LocalDateTime;
+//lombok 在编译阶段为实体类自动生成setter getter tostring
+//在pom中引入依赖，在实体类中添加注释
+@Data
 public class User {
     private Integer id;//主键ID
     private String username;//用户名
