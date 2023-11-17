@@ -20,9 +20,9 @@ public class JwtTest {
 //        生成jwt代码
       String token=  JWT.create()
                 .withClaim("user",claims)//添加载荷
-                .withExpiresAt(new Date(System.currentTimeMillis()+1000*60*60*12))//添加过期时间
+                .withExpiresAt(new Date(System.currentTimeMillis()))//添加过期时间
                 .sign(Algorithm.HMAC256("kingsy"));//指定算法，配置秘钥
-//        System.out.println(token);
+        System.out.println(token);
 
     }
     @Test
@@ -35,6 +35,8 @@ public class JwtTest {
         DecodedJWT decodedJWT =jwtVerifier.verify(token);
         Map<String, Claim> claims =decodedJWT.getClaims();
         System.out.println(claims.get("user"));
+//        如果修改头部和载荷部分，验证失败，
+//        秘钥不对也验证失败，过期也验证失败
 
     }
 }
